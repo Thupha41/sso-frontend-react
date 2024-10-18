@@ -6,6 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 const NavigationHeader = () => {
+  const handleLogin = () => {
+    // redirect to SSO
+    window.location.href = `${process.env.REACT_APP_BACKEND_SSO}?serviceURL=${process.env.REACT_APP_SERVICE_URL}`;
+  };
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -27,7 +31,9 @@ const NavigationHeader = () => {
                 Home
               </NavLink>
               <NavDropdown title="Settings" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
+                <NavDropdown.Item onClick={() => handleLogin()}>
+                  Login
+                </NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
